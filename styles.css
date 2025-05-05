@@ -1,0 +1,225 @@
+.animate-title {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.tool-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px) rotateX(5deg);
+}
+
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.animate-bounce-slow {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.tool-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dark .tool-modal {
+    background: #1f2937;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+}
+
+.loading {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+    .tool-card {
+        transform: none !important;
+    }
+    
+    .theme-switch-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.result-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tool-content input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.grade-input {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Ad Container Styles */
+.ad-container-top,
+.ad-container-bottom,
+.ad-container-feed {
+    min-height: 90px;
+    background: rgba(0,0,0,0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.ad-container-sidebar {
+    min-height: 600px;
+    background: rgba(0,0,0,0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: sticky;
+    top: 1rem;
+}
+
+/* Dark mode styles for ad containers */
+.dark .ad-container-top,
+.dark .ad-container-bottom,
+.dark .ad-container-feed,
+.dark .ad-container-sidebar {
+    background: rgba(255,255,255,0.05);
+}
+
+@media (max-width: 1024px) {
+    .ad-container-sidebar {
+        min-height: 280px;
+        position: static;
+    }
+}
+
+/* Ad Labels */
+.ad-container-top::before,
+.ad-container-bottom::before,
+.ad-container-feed::before,
+.ad-container-sidebar::before {
+    content: 'Advertisement';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(0,0,0,0.05);
+    border-bottom-right-radius: 0.25rem;
+    color: rgba(0,0,0,0.5);
+}
+
+.dark .ad-container-top::before,
+.dark .ad-container-bottom::before,
+.dark .ad-container-feed::before,
+.dark .ad-container-sidebar::before {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+}
